@@ -15,6 +15,9 @@ let server = http.createServer(function(req, res) {
     case '/css/style.css':
       serveCSS(res);
       break;
+    case '/images/trash-can.png':
+      serveTrashImage(res);
+      break;
     default: 
       pageNotFound(res);
       break;
@@ -45,6 +48,13 @@ function serveJavaScript(res) {
 function serveCSS(res) {
   fs.readFile('static/css/style.css', (err, data) => {
     if (err) console.log("couldn't read CSS file");
+    res.end(data);
+  });
+}
+
+function serveTrashImage(res) {
+  fs.readFile('static/images/trash-can.png', (err, data) => {
+    if (err) console.log("couldn't read trash can image");
     res.end(data);
   });
 }
