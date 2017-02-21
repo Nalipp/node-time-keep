@@ -2,16 +2,22 @@ const fs = require('fs');
 const http = require('http');
 
 let server = http.createServer(function(req, res) {
-  if (req.url === '/') {
-    serveIndex(res);
-  } else if (req.url === '/favicon.ico') {
-    serveFavicon(res);
-  } else if (req.url === '/js/script.js') {
-    serveJavaScript(res);
-  } else if (req.url === '/css/style.css') {
-    serveCSS(res);
-  } else {
-    pageNotFound(res);
+  switch (req.url) {
+    case '/':
+      serveIndex(res);
+      break;
+    case '/favicon.ico':
+      serveFavicon(res);
+      break;
+    case '/js/script.js':
+      serveJavaScript(res);
+      break;
+    case '/css/style.css':
+      serveCSS(res);
+      break;
+    default: 
+      pageNotFound(res);
+      break;
   }
 });
 
