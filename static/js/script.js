@@ -1,5 +1,6 @@
-let hellMode = ["h1", "main.css", "href='www.happy.com'"] 
-let beginnerMode = ["var = 4 * 9", "5 % 2 !== 8", "regex = \\[^abc]\\"]
+let beginnerMode = ["h1", "main.css", "href='www.happy.com'"] 
+let hellMode = ["var = 4 * 9", "5 % 2 !== 8", "regex = \\[^abc]\\"]
+let mode = beginnerMode;
 let userAnswers = [];
 
 $(document).ready(() => {
@@ -23,7 +24,7 @@ function addText() {
 }
 
 function populateQuestion(v) {
-  if (v < beginnerMode.length) {
+  if (v < mode.length) {
     findQuestion(v) 
   } else {
     playAgain();
@@ -31,7 +32,7 @@ function populateQuestion(v) {
 }
 
 function findQuestion(v) {
-  $('h1.blink').append(beginnerMode[v]);
+  $('h1.blink').append(mode[v]);
   //display input box
   $('input[type="text"]').addClass('input-appear');
   $('input[type="text"]').focus();
