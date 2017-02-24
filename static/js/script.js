@@ -1,17 +1,54 @@
-let tasks = ['eat some breakfast', 'go to the movies', 'watch some tv']
+let hellMode = ["h1", "main.css", "href='www.happy.com'"] 
+let beginnerMode = ["var = 4 * 9", "5 % 2 !== 8", "regex = \\[^abc]\\"]
+let userAnswers = [];
 
-$(document).ready(function() {
-  lineThroughToggle();
+$(document).ready(() => {
+  displayStart();
 });
 
-function lineThroughToggle() {
-  $( "li" ).click(function() {
-    $( this ).toggleClass( "line-through" );
-  });
-  $( "#trash-image" ).click(function() {
-    alert("Are you sure you want to delete this task?");
+function displayStart() {
+  $('button.start').click(function() {
+    $(this).addClass('button-disappear');
+    $('header h1').addClass('h1-disappear');
+    addText();
   });
 }
 
-  
+function addText() {
+  $('section').addClass('section-appear'); 
+  $('section h1').addClass('h1-appear'); 
+  $('section h1').addClass('blinking');
+  let v = 0;
+  populateQuestion(v);
+}
 
+function populateQuestion(v) {
+  if (v < beginnerMode.length) {
+    findQuestion(v) 
+  } else {
+    playAgain();
+  }
+}
+
+function findQuestion(v) {
+  $('h1.blink').append(beginnerMode[v]);
+  //display input box
+  $('input[type="text"]').addClass('input-appear');
+  $('input[type="text"]').focus();
+
+  $('input[type="text"]').keypress(function(event) {
+    if(event.which === 13) {
+      let userInput = $(this).val();
+      userAnswers.push(userInput);
+      console.log(userAnswers);
+      $('input[type="text"]').val("");
+      v = v + 1
+      $('h1.blink').empty();
+      populateQuestion(v)
+    }
+  });
+}
+
+function playAgain() {
+  window.alert('Do you want to play again?');
+}

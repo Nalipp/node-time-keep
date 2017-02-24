@@ -1,73 +1,87 @@
+* {
+  padding: 0;
+  margin: 0;
+}
 body {
   background: #007FFF;	
   font: 14px Helvetica;
   color: white;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 90px auto 20px auto;
   padding: 0 20px;
   text-align: center;
 }
-li {
-  list-style: none;
-  background: #fff;
-  color: #aaa;
-  border: 2px solid #007FFF;	
-  padding: 20px;
-  font-size: 30px;
-  text-align: left;
-  border-radius: 6px;
-  position: relative;
+header h1 {
+  font-size: 36px;
+  line-height: 60px;
+  transition: font-size 1s;
 }
-
-#trash-image {
-  float: right;
-  top: 30px;
-  width: 50px;
-  height: 50px;
-  content: "";
-  background: transparent url("/images/trash-can.png") 0 0 no-repeat;   
-  background-size: 30px;
+.h1-disappear {
+  font-size: 0;
 }
-
-h1 {
-  font-size: 40px;
-}
-
-fieldset {
+button {
+  background: white;
   border: none;
-  margin-top: 40px;
-}
-input[type="text"] {
-  height: 40px;
-  text-align: center;
-  font-size: 30px;
-  padding: 20px;
-  color: grey;
-  border-radius: 4px;
-  border: none;
-}
-.btn {
-  background: #aaa;
-  border: none;
+  color: #007FFF;
   border-radius: 100px;
   height: 100px;
   width: 100px;
-  color: white;
-  font-size: 100px;
+  font-size: 30px;
+  cursor: pointer;
+  transition: height 1s, width 1s, font-size 1s, background 1s;
+}
+button:focus {
+  outline: none;
+}
+.button-disappear {
+  height: 0;
+  width: 0;
+  font-size: 0;
+  background: #007FFF;
   line-height: 0;
-  padding-bottom: 14px;
-  margin-top: 40px;
 }
-.line-through {
-  text-decoration: line-through;
-  color: #ddd;
+section {
+  opacity: 0;
+  transition: opacity 2s;
 }
-.no-line-thorugh {
-  text-decoration: none;
-  color: green;
-  background: purple;
+section h1 {
+  opacity: 0;
+  transition: opacity 2s;
+  margin-bottom: 40px;
+  padding: 10px;
 }
-li::after {
+input {
+  opacity: 0;
+  transition-delay: 1s;
+  height: 60px;
+  width: 100%;
+  background: #007FFF;
+  border: none;
+  font-size: 40px;
+  text-align: center;
 }
+input:focus {
+  outline: none;
+}
+.section-appear {
+  opacity: 1;
+}
+.h1-appear {
+  opacity: 1;
+}
+.input-appear {
+  opacity: 1;
+}
+@-webkit-keyframes blinker {  
+     0% {
+      background-color: #007FFF;
+    }
+    100% {
+      background-color: #282C34;
+    }}
 
-
+.blink {
+  animation-name: blinker;  
+  animation-iteration-count: infinite;  
+  animation-duration: 1s; 
+}	
